@@ -66,7 +66,7 @@ This is a simple Todo List API built with Express, TypeScript, and MongoDB. The 
 1. **Start the development server**:
 
    ```bash
-   pnpm dev
+   pnpm start
    ```
 
 2. **API** will be available at `http://localhost:8000`.
@@ -109,6 +109,7 @@ This is a simple Todo List API built with Express, TypeScript, and MongoDB. The 
 /src
 │
 ├── controllers
+│   ├── authController.ts
 │   └── todoController.ts
 │
 ├── services
@@ -118,15 +119,16 @@ This is a simple Todo List API built with Express, TypeScript, and MongoDB. The 
 │   └── todoRepository.ts
 │
 ├── routes
+│   ├── authRoutes.ts
 │   └── todoRoutes.ts
 │
 ├── middlewares
 │   └── authMiddleware.ts
 │
 ├── models
-│   ├── todo.ts
-│   └── user.ts
-│   └── refreshToken.ts
+│   ├── auth.schema.ts
+│   ├── todo.schema.ts
+│   └── user.schema.ts
 │
 └── index.ts
 ```
