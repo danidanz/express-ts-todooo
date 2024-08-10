@@ -1,0 +1,23 @@
+# Node modules directory
+node_modules
+
+# Log files
+*.log
+logs/
+
+# Git directory and files
+.git
+.gitignore
+
+# Temporary files and directories
+tmp/
+temp/
+
+# Build output (if applicable)
+dist/
+build/
+
+
+#Rest Client
+_apitest/
+
