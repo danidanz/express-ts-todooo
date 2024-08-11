@@ -56,7 +56,7 @@ This is a simple Todo List API built with Express, TypeScript, and MongoDB. The 
 4. **Build the TypeScript code**:
 
    ```bash
-   pnpm build
+   pnpm exec tsc
    ```
 
 ### Running the Application
