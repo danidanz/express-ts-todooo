@@ -9,30 +9,30 @@ export const auth = (req: Request, res: Response, next: NextFunction) => {
   if (accessToken) {
     try {
       jwt.verify(accessToken, process.env.JWT_ACCESS_TOKEN_SECRET as string);
-      console.log("Access token is still valid");
+      console.log("Access-Token is still valid");
       next();
     } catch (error) {
       // If false, regenerate new access token from refreshToken
       if (!refreshToken) {
-        console.log("Refresh Token is not found");
+        console.log("Refresh-Token is not found");
         return res.status(401).json({ message: "Please re-login..." });
       }
 
       try {
         // Check if Refresh Token Valid
-        console.log("Verify Refresh Token");
+        console.log("Verify Refresh-Token");
         jwt.verify(
           refreshToken,
           process.env.JWT_REFRESH_TOKEN_SECRET as string
         );
         // If valid, verify if it's exist in database
-        console.log("Checking refresh token into the database");
+        console.log("Checking Refresh-Token in the database");
         const activeRefreshToken = Auth.findOne({
           refreshToken,
         });
 
         if (!activeRefreshToken) {
-          console.log("Refresh token can't be found in the database");
+          console.log("Refresh-Token can't be found in the database");
           return res.status(401).json({ message: "Please re-login..." });
         }
 
@@ -42,7 +42,6 @@ export const auth = (req: Request, res: Response, next: NextFunction) => {
           email: string;
         };
 
-        console.log("Bikin accessToken baru");
         const newAccessToken = jwt.sign(
           {
             id: payload?.id,
@@ -52,7 +51,8 @@ export const auth = (req: Request, res: Response, next: NextFunction) => {
           process.env.JWT_ACCESS_TOKEN_SECRET as string,
           { expiresIn: 300 }
         );
-        // regenerate new access token
+        console.log("Regenerated new Access-Token");
+
         res.cookie("accessToken", newAccessToken, { httpOnly: true });
         next();
       } catch (error) {

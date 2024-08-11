@@ -36,3 +36,6 @@ Thumbs.db
 
 #Rest Client
 _apitest/
+
+#Provate Docker-Composer file
+docker-compose.yml
